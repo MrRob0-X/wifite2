@@ -2,24 +2,7 @@ default_target: install
 
 install:
 	/usr/bin/env python3 setup.py install
-
-ath_masker:
-	cd tools/ath_masker/ && ./load.sh
-	@rm -rf tools/ath_masker/.ath_masker.o.d
-
-modwifi:
-	cd tools/modwifi/ && ./install.sh
-	mkdir tools/modwifi/tools/build/
-	cd tools/modwifi/tools/build/ && cmake ../
-	cd tools/modwifi/tools/build/ && make
-
-	/usr/bin/env python3 setup.py install
 	/usr/bin/env pip3 install -r requirements.txt
-
-	@clear
-	@echo "#----------------------------------------------"
-	@echo "# modwifi and related tools has been installed!"
-	@echo "#----------------------------------------------"
 
 reaver:
 	git clone https://github.com/kimocoder/reaver-wps-fork-t6x tools/reaver/
@@ -54,13 +37,6 @@ deps:
 	/usr/bin/env pip3 install -r requirements.txt
 
 update:
-ifneq ($(wildcard tools/ath_masker/.*),)
-	cd tools/ath_masker/ && git pull
-else
-	@echo "ATH_MASKER is not installed."
-endif
-
-	@rm -rf tools/ath_masker/.ath_masker.o.d
 	cd tools/reaver/ && git pull
 	cd tools/bully/ && git pull
 	cd tools/pixiewps/ && git pull
@@ -73,10 +49,6 @@ clean:
 	rm -rf build/
 	rm -rf dist/
 	rm -rf wifite.egg-info
-	rm -rf tools/modwifi/backports/
-	rm -rf tools/modwifi/ath9k-htc/
-	rm -rf tools/modwifi/linux/
-	rm -rf tools/modwifi/tools/
 	rm -rf tools/reaver/
 	rm -rf tools/bully/
 	rm -rf tools/pixiewps/
@@ -98,8 +70,6 @@ help:
 	@echo " make bully       : pull latest bully from git and install"
 	@echo " make hcxdumptool : pull latest hcxdumptool from git and install"
 	@echo " make hcxtools    : pull latest hcxtools from git and install"
-	@echo " make ath_masker  : download and build/install ath_masker"
-	@echo " make modwifi     : download and build/install modwifi"
 	@echo " "
 	@echo " 2. Update installed tools or dependencies"
 	@echo " "

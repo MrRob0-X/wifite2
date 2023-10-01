@@ -33,7 +33,7 @@ iw:
 	cd tools/iw/ && make && make install
 
 deps:
-	apt update && apt install -yq cmake libssl-dev libpcap-dev libcap-dev libnl-genl-3-dev libnl-genl-3-200 python-setuptools pkg-config libcurl4-openssl-dev python2 build-essential python2-dev
+	apt update && apt install -yq cmake libssl-dev libpcap-dev libcap-dev libnl-genl-3-dev libnl-genl-3-200 python3-setuptools pkg-config libcurl4-openssl-dev python2 build-essential python2-dev
 	/usr/bin/env pip3 install -r requirements.txt
 
 update:

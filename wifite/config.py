@@ -12,7 +12,7 @@ class Configuration(object):
 
     initialized = False  # Flag indicating config has been initialized
     verbose = 0
-    version = '2.7.1'
+    version = '2.7.2'
 
     all_bands = None
     attack_max = None
